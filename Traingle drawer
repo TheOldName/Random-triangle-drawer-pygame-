@@ -1,0 +1,44 @@
+import random
+import pygame
+
+WIDTH = 800
+HEIGHT = 800
+FPS = 30
+
+l1x1 = random.randint(100, 700)
+l1y1 = random.randint(100, 700)
+l1x2 = random.randint(100, 700)
+l1y2 = random.randint(100, 700)
+l2x2 = random.randint(100, 700)
+l2y2 = random.randint(100, 700)
+
+# Creating game window
+pygame.init()
+pygame.mixer.init()
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("My")
+clock = pygame.time.Clock()
+
+# Game cycle
+running = True
+while running:
+
+    # Cycle speed
+
+    clock.tick(FPS)
+
+    pygame.draw.line(screen, [0, 255, 0], [l1x1, l1y1], [l1x2, l1y2])
+    pygame.draw.line(screen, [0, 255, 0], [l1x2, l1y2], [l2x2, l2y2])
+    pygame.draw.line(screen, [0, 255, 0], [l2x2, l2y2], [l1x1, l1y1])
+
+    for event in pygame.event.get():
+        # check for closing window
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Rendering
+
+    # Flipping screen
+    pygame.display.flip()
+
+pygame.quit()
